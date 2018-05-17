@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+
+#IDE
+.idea
+.classpath
+.project
+.settings
+
+#target
+/target/
+
+#java
+*.class
+
