@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ifoods.dao.CacheTableMapper">
+
+    <insert id="saveAndUpdate" parameterType="string">
+    	insert into `cache_table` 
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="key != null" >
+	        `t_key`,
+	      </if>
+	      <if test="value != null" >
+	        `t_value`,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="key != null" >
+	        #{key},
+	      </if>
+	      <if test="value != null" >
+	        #{value},
+	      </if>
+	    </trim>
+	    ON DUPLICATE KEY UPDATE t_value = #{value}
+    </insert>
+    
+    <select id="getCacheValueByKey" resultType="string" parameterType="string">
+    	select t_value from cache_table where t_key=#{key}
+    </select>
+
+    <delete id="deleteByKey" parameterType="string">
+    	delete from cache_table where t_key=#{key}
+    </delete>
+
+</mapper>

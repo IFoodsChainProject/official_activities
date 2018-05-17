@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ifoods.dao.CandyActivityMapper">
+
+    <insert id="save" parameterType="CandyActivity">
+    	insert into `candy_activity` 
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="name != null" >
+	        `name`,
+	      </if>
+	      <if test="email != null" >
+	        `email`,
+	      </if>
+	      <if test="telephone != null" >
+	        `telephone`,
+	      </if>
+	      <if test="ethAddress != null" >
+	        `eth_address`,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="name != null" >
+	        #{name},
+	      </if>
+	      <if test="email != null" >
+	        #{email},
+	      </if>
+	      <if test="telephone != null" >
+	        #{telephone},
+	      </if>
+	      <if test="ethAddress != null" >
+	        #{ethAddress},
+	      </if>
+	    </trim>
+    </insert>
+    
+    <select id="findAllByEmail" parameterType="string" resultType="CandyActivity">
+    	select `id`, `name`, `email`, `telephone`, `eth_address` ethAddress from candy_activity where email = #{email}
+    </select>
+    
+    <insert id="save0505" parameterType="Activity0505">
+    	insert into `activity_0505` 
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+	      <if test="name != null" >
+	        `name`,
+	      </if>
+	      <if test="email != null" >
+	        `email`,
+	      </if>
+	      <if test="telephone != null" >
+	        `telephone`,
+	      </if>
+	      <if test="wechatName != null" >
+	        `wechat_name`,
+	      </if>
+	      <if test="ethAddress != null" >
+	        `eth_address`,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+	      <if test="name != null" >
+	        #{name},
+	      </if>
+	      <if test="email != null" >
+	        #{email},
+	      </if>
+	      <if test="telephone != null" >
+	        #{telephone},
+	      </if>
+	      <if test="wechatName != null" >
+	        #{wechatName},
+	      </if>
+	      <if test="ethAddress != null" >
+	        #{ethAddress},
+	      </if>
+	    </trim>
+    </insert>
+    
+    <select id="findAllByEmail0505" parameterType="string" resultType="Activity0505">
+    	select `id`, `name`, `email`, `telephone`, `wechat_name` wechatName, `eth_address` ethAddress from activity_0505 where email = #{email}
+    </select>
+
+</mapper>
